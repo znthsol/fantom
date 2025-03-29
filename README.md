@@ -11,6 +11,12 @@ Fantom is an intelligent search system that combines efficient caching with adva
   - Initial fast retrieval using Redis Cache
   - Advanced sorting algorithms for preliminary ranking
   - GPT-4 mini powered reranking for final result ordering
+  - **Available Sorting Algorithms**:
+    - **Fuzzy Matching**: Scores items based on term frequency, rarity, position, and length normalization.
+    - **BM25**: Uses a probabilistic framework considering term frequency, inverse document frequency, and document length normalization.
+    - **TF-IDF**: Scores items based on term frequency relative to corpus frequency.
+    - **Cosine Similarity**: Measures similarity between query and document vectors.
+    - **Jaccard Similarity**: Calculates similarity as the size of the intersection divided by the size of the union of sample sets.
 - **Field-weighted scoring**: Customize importance of different fields in search results
 - **Scoped Tagging**: Advanced filtering capabilities with scoped tags
 - **API Key Authentication**: Secure access control

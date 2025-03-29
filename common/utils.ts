@@ -9,7 +9,7 @@ export interface CorpusStats {
     termDocumentFrequency?: Map<string, number>; // New field for TF-IDF
 }
 
-export function calculateScore(query: string, item: any, algorithm: 'fuzzy' | 'bm25'): number {
+export function calculateScore(query: string, item: any, algorithm: 'fuzzy' | 'bm25' | 'tfidf' | 'cosine' | 'jaccard'): number {
     // Create a default corpus stats object if not available
     const defaultCorpusStats: CorpusStats = {
         totalDocuments: 1,
@@ -30,6 +30,12 @@ export function calculateScore(query: string, item: any, algorithm: 'fuzzy' | 'b
             return calculateBM25Score(query, item, defaultCorpusStats);
         case 'fuzzy':
             return calculateFuzzyScore(query, item, defaultCorpusStats);
+        case 'tfidf':
+            return calculateTFIDFScore(query, item, defaultCorpusStats);
+        case 'cosine':
+            return calculateCosineSimilarityScore(query, item, defaultCorpusStats);
+        case 'jaccard':
+            return calculateJaccardSimilarityScore(query, item, defaultCorpusStats);
         default:
             return calculateFuzzyScore(query, item, defaultCorpusStats);
     }
