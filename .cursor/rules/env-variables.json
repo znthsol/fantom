@@ -1,0 +1,16 @@
+{
+  "name": "Environment Variables",
+  "description": "Rules for handling environment variables in the project",
+  "rules": [
+    {
+      "pattern": "\\.env$",
+      "message": "Environment variables should be properly documented and validated",
+      "severity": "warning",
+      "suggestions": [
+        "Add comments explaining each environment variable's purpose",
+        "Use TypeScript types for environment variables",
+        "Implement environment variable validation"
+      ]
+    }
+  ]
+} 

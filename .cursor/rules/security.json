@@ -1,0 +1,20 @@
+{
+  "name": "Security Best Practices",
+  "description": "Rules for maintaining security in the project",
+  "rules": [
+    {
+      "pattern": ".*",
+      "message": "Security best practices should be followed",
+      "severity": "error",
+      "suggestions": [
+        "Never commit sensitive data or API keys",
+        "Use environment variables for secrets",
+        "Implement proper authentication and authorization",
+        "Sanitize user inputs",
+        "Use HTTPS for all API calls",
+        "Implement rate limiting",
+        "Follow OWASP security guidelines"
+      ]
+    }
+  ]
+} 

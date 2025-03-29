@@ -1,0 +1,18 @@
+{
+  "name": "Component Structure",
+  "description": "Rules for React component organization and structure",
+  "rules": [
+    {
+      "pattern": "components/.*\\.tsx$",
+      "message": "Components should follow project structure conventions",
+      "severity": "warning",
+      "suggestions": [
+        "Use functional components with hooks",
+        "Implement proper prop types",
+        "Follow atomic design principles",
+        "Include component documentation",
+        "Separate business logic from presentation"
+      ]
+    }
+  ]
+} 

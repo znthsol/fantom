@@ -1,0 +1,17 @@
+{
+  "name": "TypeScript Configuration",
+  "description": "Rules for TypeScript configuration and usage",
+  "rules": [
+    {
+      "pattern": "\\.tsx?$",
+      "message": "TypeScript files should follow project conventions",
+      "severity": "warning",
+      "suggestions": [
+        "Use strict type checking",
+        "Avoid using 'any' type",
+        "Prefer interfaces over type aliases for object types",
+        "Use proper type imports/exports"
+      ]
+    }
+  ]
+} 

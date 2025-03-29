@@ -1,0 +1,26 @@
+{
+  "name": "fantom",
+  "version": "1.0.0",
+  "description": "Fantom is an AI powered smart search microservice",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@huggingface/inference": "^2.6.4",
+    "@koa/router": "^13.1.0",
+    "@langchain/community": "^0.0.32",
+    "@langchain/core": "^0.1.48",
+    "@langchain/openai": "^0.0.14",
+    "@langchain/redis": "^0.0.1",
+    "@redis/client": "^1.6.0",
+    "@redis/search": "^1.2.0",
+    "@spytech/flight": "github:ispyhumanfly/flight",
+    "dotenv": "^16.4.7"
+  },
+  "scripts": {
+    "start": "node -r dotenv/config ./node_modules/.bin/ts-node ./node_modules/@spytech/flight/src/flight.ts --port 3003 --disable_vite"
+  },
+  "devDependencies": {
+    "@types/koa__router": "^12.0.4",
+    "ts-node": "^10.9.2"
+  }
+}
