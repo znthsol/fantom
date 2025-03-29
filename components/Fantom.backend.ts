@@ -1,13 +1,11 @@
 import Router from '@koa/router';
-import { validateSearchParams, getErrorMessage, loadFantomConfig } from './Fantom.common';
-import { calculateScore, reRanker } from '../common/utils';
+import { validateSearchParams, getErrorMessage, loadFantomConfig, searchAndSortFromRedis } from './Fantom.common';
+import { reRanker, SearchResult } from '../common/utils';
 import { config } from 'dotenv';
-import { createClient } from '@redis/client';
 
 config();
 
 const router = new Router();
-
 
 router.post('/v1/search/:user_id', async (ctx) => {
     const { user_id } = ctx.params;
@@ -39,41 +37,14 @@ router.post('/v1/search/:user_id', async (ctx) => {
     }
 
     try {
-        // Connect to Redis database 15 for search
-        const client = createClient({
-            url: process.env.REDIS_URL || 'redis://localhost:6379',
-            database: 5
-        });
-        await client.connect();
-        
-        // Perform fuzzy search on all values in Redis
-        const keys = await client.keys('*');
-        console.log("Keys:", keys);
-        const allValues = [];
-        
-        for (const key of keys) {
-            const value = await client.get(key);
-            try {
-                const parsedValue = JSON.parse(value);
-                const score = calculateScore(query, parsedValue, config.users.find(user => user.user_id === user_id)?.algorithm || "bm25");
-
-                console.log("Score:", score);
-
-                allValues.push({ key, value: parsedValue, score });
-            } catch (e) {
-                console.log("Error:", e);
-                continue;
-            }
-        }
-        
-        let results = allValues.sort((a, b) => b.score - a.score).slice(0, 10).map(item => item).filter(item => item.score > 0);
-          
-        await client.disconnect();
+        let results: SearchResult[] = await searchAndSortFromRedis(query, user_id, config);
 
         // Use GPT to re-sort results based on user intent
         if (results.length > 0) {
-            const rerankedResults = await reRanker(query, results as any);
-            results = results
+            console.log("Results before reranking:", results.map(r => r.score));
+            const rerankedResults = await reRanker(query, results);
+            console.log("Results after reranking:", rerankedResults.map(r => r.score));
+            results = rerankedResults;
         }
         
         ctx.body = {

@@ -5,6 +5,8 @@ export interface CorpusStats {
     avgFieldLength: number;
     termFrequencies: Map<string, number>;
     fieldWeights: Record<string, number>;
+    documentVectors?: Map<string, number[]>; // New field for Cosine Similarity
+    termDocumentFrequency?: Map<string, number>; // New field for TF-IDF
 }
 
 export function calculateScore(query: string, item: any, algorithm: 'fuzzy' | 'bm25'): number {
@@ -137,7 +139,49 @@ export function calculateBM25Score(query: string, item: any, corpusStats: Corpus
     return score;
 }
 
-export async function reRanker(query: string, results: []): Promise<[]> {
+export function calculateTFIDFScore(query: string, item: any, corpusStats: CorpusStats): number {
+    let score = 0;
+    const queryTerms = query.toLowerCase().split(/\s+/);
+    
+    queryTerms.forEach(term => {
+        const termFreq = (item[term] || 0);
+        const docFreq = corpusStats.termDocumentFrequency?.get(term) || 1;
+        const idf = Math.log(corpusStats.totalDocuments / (docFreq + 1));
+        score += termFreq * idf;
+    });
+    
+    return score;
+}
+
+export function calculateCosineSimilarityScore(query: string, item: any, corpusStats: CorpusStats): number {
+    const queryTerms = query.toLowerCase().split(/\s+/);
+    const queryVector = queryTerms.map(term => corpusStats.termFrequencies.get(term) || 0);
+    const itemVector = corpusStats.documentVectors?.get(item.key) || [];
+    
+    const dotProduct = queryVector.reduce((sum, q, i) => sum + q * (itemVector[i] || 0), 0);
+    const queryMagnitude = Math.sqrt(queryVector.reduce((sum, q) => sum + q * q, 0));
+    const itemMagnitude = Math.sqrt(itemVector.reduce((sum, v) => sum + v * v, 0));
+    
+    return dotProduct / (queryMagnitude * itemMagnitude);
+}
+
+export function calculateJaccardSimilarityScore(query: string, item: any, corpusStats: CorpusStats): number {
+    const queryTerms = new Set(query.toLowerCase().split(/\s+/));
+    const itemTerms = new Set(Object.values(item).flatMap(value => typeof value === 'string' ? value.toLowerCase().split(/\s+/) : []));
+    
+    const intersection = new Set([...queryTerms].filter(x => itemTerms.has(x)));
+    const union = new Set([...queryTerms, ...itemTerms]);
+    
+    return intersection.size / union.size;
+}
+
+export interface SearchResult {
+    key: string;
+    value: any;
+    score: number;
+}
+
+export async function reRanker(query: string, results: SearchResult[]): Promise<SearchResult[]> {
     if (results.length === 0) return results;
 
     try {
@@ -162,7 +206,7 @@ export async function reRanker(query: string, results: []): Promise<[]> {
             // Validate that the response is an array of indices
             if (Array.isArray(newOrder) && newOrder.every(idx => typeof idx === 'number' && idx >= 0 && idx < results.length)) {
                 // Re-order the results based on GPT's suggestion
-                return newOrder.map(index => results[index]) as typeof results;
+                return newOrder.map(index => results[index]);
             }
         } catch (parseError) {
             console.error('Error parsing GPT response:', parseError);

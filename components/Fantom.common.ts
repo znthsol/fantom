@@ -4,6 +4,8 @@
 
 import fs from 'fs';
 import path from 'path';
+import { createClient } from '@redis/client';
+import { calculateScore } from '../common/utils';
 
 /**
  * Loads and parses the Fantom configuration file
@@ -108,4 +110,51 @@ export const getErrorMessage = (error: unknown): string => {
     return error.message;
   }
   return String(error);
+};
+
+/**
+ * Searches and sorts data from Redis based on a query
+ * @param query The search query string
+ * @param userId The user ID for algorithm selection
+ * @param config The Fantom configuration object
+ * @returns Array of sorted search results
+ */
+export const searchAndSortFromRedis = async (
+    query: string,
+    userId: string,
+    config: any
+): Promise<Array<{ key: string; value: any; score: number }>> => {
+    const client = createClient({
+        url: process.env.REDIS_URL || 'redis://localhost:6379',
+        database: 5
+    });
+    
+    try {
+        await client.connect();
+        const keys = await client.keys('*');
+        const allValues = [];
+        
+        for (const key of keys) {
+            const value = await client.get(key);
+            try {
+                const parsedValue = JSON.parse(value);
+                const score = calculateScore(
+                    query,
+                    parsedValue,
+                    config.users.find(user => user.user_id === userId)?.algorithm || "bm25"
+                );
+                allValues.push({ key, value: parsedValue, score });
+            } catch (e) {
+                console.log("Error:", e);
+                continue;
+            }
+        }
+        
+        return allValues
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 10)
+            .filter(item => item.score > 0);
+    } finally {
+        await client.disconnect();
+    }
 };
