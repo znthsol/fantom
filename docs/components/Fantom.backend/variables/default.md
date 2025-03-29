@@ -2,10 +2,10 @@
 
 ***
 
-[fantom](../../../modules.md) / [components/Fantom.backend](../README.md) / default
+[fantom](../../../README.md) / [components/Fantom.backend](../README.md) / default
 
 # Variable: default
 
 > **default**: `Middleware`\<`DefaultState`, `DefaultContext`, `unknown`\>
 
-Defined in: [components/Fantom.backend.ts:90](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/components/Fantom.backend.ts#L90)
+Defined in: [components/Fantom.backend.ts:90](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/components/Fantom.backend.ts#L90)

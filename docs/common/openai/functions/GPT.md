@@ -2,13 +2,13 @@
 
 ***
 
-[fantom](../../../modules.md) / [common/openai](../README.md) / GPT
+[fantom](../../../README.md) / [common/openai](../README.md) / GPT
 
 # Function: GPT()
 
 > **GPT**(`params`): `Promise`\<`string`\>
 
-Defined in: [common/openai.ts:18](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/common/openai.ts#L18)
+Defined in: [common/openai.ts:18](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/openai.ts#L18)
 
 Invokes OpenAI's GPT models through their API.
 

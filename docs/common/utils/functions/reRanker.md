@@ -2,13 +2,13 @@
 
 ***
 
-[fantom](../../../modules.md) / [common/utils](../README.md) / reRanker
+[fantom](../../../README.md) / [common/utils](../README.md) / reRanker
 
 # Function: reRanker()
 
 > **reRanker**(`query`, `results`): `Promise`\<\[\]\>
 
-Defined in: [common/utils.ts:140](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/common/utils.ts#L140)
+Defined in: [common/utils.ts:140](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L140)
 
 ## Parameters
 

@@ -2,7 +2,7 @@
 
 ***
 
-[fantom](../../modules.md) / common/openai
+[fantom](../../README.md) / common/openai
 
 # common/openai
 

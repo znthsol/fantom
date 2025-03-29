@@ -2,13 +2,13 @@
 
 ***
 
-[fantom](../../../modules.md) / [components/Fantom.common](../README.md) / loadFantomConfig
+[fantom](../../../README.md) / [components/Fantom.common](../README.md) / loadFantomConfig
 
 # Function: loadFantomConfig()
 
 > **loadFantomConfig**(): `any`
 
-Defined in: [components/Fantom.common.ts:12](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/components/Fantom.common.ts#L12)
+Defined in: [components/Fantom.common.ts:12](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/components/Fantom.common.ts#L12)
 
 Loads and parses the Fantom configuration file
 

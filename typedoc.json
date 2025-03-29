@@ -13,5 +13,6 @@
   "hideBreadcrumbs": false,
   "hidePageTitle": false,
   "includeVersion": true,
-  "sort": ["source-order"]
+  "sort": ["source-order"],
+  "readme": "none"
 } 

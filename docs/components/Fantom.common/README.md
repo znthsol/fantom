@@ -2,7 +2,7 @@
 
 ***
 
-[fantom](../../modules.md) / components/Fantom.common
+[fantom](../../README.md) / components/Fantom.common
 
 # components/Fantom.common
 

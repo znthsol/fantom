@@ -2,13 +2,13 @@
 
 ***
 
-[fantom](../../../modules.md) / [components/Fantom.common](../README.md) / validateSearchParams
+[fantom](../../../README.md) / [components/Fantom.common](../README.md) / validateSearchParams
 
 # Function: validateSearchParams()
 
 > **validateSearchParams**(`query`, `parameters`): `boolean`
 
-Defined in: [components/Fantom.common.ts:40](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/components/Fantom.common.ts#L40)
+Defined in: [components/Fantom.common.ts:40](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/components/Fantom.common.ts#L40)
 
 Validates the search query parameters
 

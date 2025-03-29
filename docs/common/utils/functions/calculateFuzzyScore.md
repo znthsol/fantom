@@ -2,13 +2,13 @@
 
 ***
 
-[fantom](../../../modules.md) / [common/utils](../README.md) / calculateFuzzyScore
+[fantom](../../../README.md) / [common/utils](../README.md) / calculateFuzzyScore
 
 # Function: calculateFuzzyScore()
 
 > **calculateFuzzyScore**(`query`, `item`, `corpusStats`): `number`
 
-Defined in: [common/utils.ts:36](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/common/utils.ts#L36)
+Defined in: [common/utils.ts:36](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L36)
 
 ## Parameters
 

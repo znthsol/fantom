@@ -2,13 +2,13 @@
 
 ***
 
-[fantom](../../../modules.md) / [components/Fantom.common](../README.md) / parseScopedTags
+[fantom](../../../README.md) / [components/Fantom.common](../README.md) / parseScopedTags
 
 # Function: parseScopedTags()
 
 > **parseScopedTags**(`tags`): `Record`\<`string`, `string`[]\>
 
-Defined in: [components/Fantom.common.ts:69](https://github.com/ispyhumanfly/fantom/blob/5e71c4810da61962efdba48a40a0ad9a0b820847/components/Fantom.common.ts#L69)
+Defined in: [components/Fantom.common.ts:69](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/components/Fantom.common.ts#L69)
 
 Parses scoped tags from the format "scope:value"
 
