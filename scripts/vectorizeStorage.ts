@@ -40,7 +40,7 @@ async function main() {
         // Initialize Redis client
         const redis = createClient({
             url: process.env.REDIS_URL || 'redis://localhost:6379',
-            database: 6
+            database: 5
         });
 
         await redis.connect();

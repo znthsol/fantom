@@ -2,9 +2,13 @@
 
   "users": [
     {
+      "user_id": "ismaeel",
       "name": "Ismaeel Iqbal",
       "email": "ismaeel@spytech.ai",
-      "directory_id": "ismaeel"
+      "api-key": "ismaeel-api-key",
+      "algorithm": "bm25",
+      "redis-database": 5,
+      "path": "ismaeel"
     }
   ]
 }
