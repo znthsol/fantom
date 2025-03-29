@@ -141,8 +141,7 @@ export async function reRanker(query: string, results: []): Promise<[]> {
     if (results.length === 0) return results;
 
     try {
-        // Prepare the results data for GPT
-        const resultsText = JSON.stringify(results, null, 2);
+        const inputText = JSON.stringify(results, null, 1);
         
         // Create instructions for GPT to understand the task
         const instructions = `You are an intelligent search assistant. I have search results for the query: "${query}". 
@@ -151,9 +150,9 @@ export async function reRanker(query: string, results: []): Promise<[]> {
         
         // Call GPT-4o to analyze and re-sort the results
         const gptResponse = await GPT({
-            version: 'gpt-4o',
+            version: 'gpt-4o-mini',
             instructions: instructions,
-            inputText: resultsText
+            inputText
         });
 
         // Parse the response to get the new order

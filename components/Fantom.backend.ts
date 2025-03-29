@@ -1,5 +1,5 @@
 import Router from '@koa/router';
-import { validateSearchParams, getErrorMessage, loadFantomConfig } from './Fantom.utils';
+import { validateSearchParams, getErrorMessage, loadFantomConfig } from './Fantom.common';
 import { calculateScore, reRanker } from '../common/utils';
 import { config } from 'dotenv';
 import { createClient } from '@redis/client';
