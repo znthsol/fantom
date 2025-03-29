@@ -55,7 +55,7 @@ router.post('/v1/search/:user_id', async (ctx) => {
             const value = await client.get(key);
             try {
                 const parsedValue = JSON.parse(value);
-                const score = caclulateScore(query, parsedValue, config.users.find(user => user.directory_id === user_id)?.algorithm || "bm25");
+                const score = caclulateScore(query, parsedValue, config.users.find(user => user.user_id === user_id)?.algorithm || "bm25");
 
                 console.log("Score:", score);
 
@@ -113,6 +113,49 @@ router.post('/v1/search/:user_id', async (ctx) => {
         //         console.error('Error summarizing results:', error);
         //     }
         // }
+
+        // Use GPT-4o to re-sort results based on user intent
+        if (results.length > 0) {
+            try {
+                // Import the GPT function from our openai utility
+                const { GPT } = require('../common/openai');
+                
+                // Prepare the results data for GPT
+                const resultsText = JSON.stringify(results, null, 2);
+                
+                // Create instructions for GPT to understand the task
+                const instructions = `You are an intelligent search assistant. I have search results for the query "${query}". 
+                Please analyze these results and re-rank them based on what you believe the user is truly looking for. 
+                Consider relevance, quality, and user intent. Return only a JSON array of indices representing the new order. Raw json, not markdown.`;
+                
+                // Call GPT-4o to analyze and re-sort the results
+                const gptResponse = await GPT({
+                    version: 'gpt-4o',
+                    instructions: instructions,
+                    inputText: resultsText
+                });
+
+                console.log("GPT Response:", gptResponse);
+                
+                // Parse the response to get the new order
+                try {
+                    const newOrder = JSON.parse(gptResponse);
+                    
+                    // Validate that the response is an array of indices
+                    if (Array.isArray(newOrder) && newOrder.every(idx => typeof idx === 'number' && idx >= 0 && idx < results.length)) {
+                        // Re-order the results based on GPT's suggestion
+                        const reorderedResults = newOrder.map(index => results[index]);
+                        results.splice(0, results.length, ...reorderedResults);
+                    }
+                } catch (parseError) {
+                    console.error('Error parsing GPT response:', parseError);
+                    // Continue with original results if parsing fails
+                }
+            } catch (error) {
+                console.error('Error using GPT to re-sort results:', error);
+                // Continue with original results if GPT processing fails
+            }
+        }
         
         ctx.body = {
             query,

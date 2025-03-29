@@ -29,7 +29,8 @@ async function getAllFiles(dir: string): Promise<string[]> {
 }
 
 async function main() {
-    const baseDir = "./tmp"
+    
+    const baseDir = process.env.FANTOM_BASE_DIR || "./tmp"
     
     if (!baseDir) {
         console.error('FANTOM_BASE_DIR environment variable is not set');
