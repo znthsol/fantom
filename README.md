@@ -1,6 +1,6 @@
-# Fantom - AI-Powered Smart Search Microservice
+# Fantom
 
-Fantom is an intelligent search microservice that combines efficient caching with advanced sorting algorithms and AI-powered reranking to deliver highly accurate search results. It's designed to be easily integrated into existing applications, particularly useful for platforms that need to enhance their search capabilities.
+Fantom is an intelligent search system that combines efficient caching with advanced sorting algorithms and AI-powered reranking to deliver highly accurate search results. It's designed to be easily integrated into existing applications, particularly useful for platforms that need to enhance their search capabilities.
 
 ## Features
 
