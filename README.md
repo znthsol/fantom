@@ -2,7 +2,7 @@
 
 What is fantom? Basically it's an AI powered smart search microservice. That's right, it's intended to be used as a micro-service. And people could integrate fantoms abilities into their existing web site search. An example use case for fantom would be, imagine a e-commerce platform, built using some custom e-commerce platform, has terrible product search. The guy who owns it, really wants to make it better. He could integrate fantom as a micro-service into his existing platform. And now he has a smart search engine that can search for products by name, description, features, etc. 
 
-## How does it work?
+## How does it work? 
 
 Fantom uses a combination of natural language processing and machine learning to understand the user's search query. It then uses this information to search for the most relevant results in the vector database. The vector database stays in sync with the contents of a local diectory, which contains json objects which represent the customers product data, or whatever they want to have our AI smart search solution (fantom) to help them out with
 
