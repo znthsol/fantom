@@ -1,0 +1,17 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./components/**/*.ts",
+    "./common/**/*.ts",
+    "./scripts/**/*.ts"
+  ],
+  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts"],
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideBreadcrumbs": false,
+  "hidePageTitle": false,
+  "includeVersion": true,
+  "sort": ["source-order"]
+} 
