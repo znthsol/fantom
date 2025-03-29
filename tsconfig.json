@@ -3,7 +3,7 @@
         "target": "ES2020",
         "module": "NodeNext",
         "outDir": "./dist",
-        "rootDir": "./components"
+        "rootDir": "."
     },
-    "include": ["components/**/*.ts"]
+    "include": ["components/**/*.ts", "common/utils.ts"]
 }
