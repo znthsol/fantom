@@ -1,24 +1,32 @@
 # Fantom - AI-Powered Smart Search Microservice
 
-Fantom is an intelligent search microservice that combines multiple search algorithms with AI-powered relevance scoring to deliver highly accurate search results. It's designed to be easily integrated into existing applications, particularly useful for platforms that need to enhance their search capabilities.
+Fantom is an intelligent search microservice that combines efficient caching with advanced sorting algorithms and AI-powered reranking to deliver highly accurate search results. It's designed to be easily integrated into existing applications, particularly useful for platforms that need to enhance their search capabilities.
 
 ## Features
 
-- **Multiple Search Algorithms**:
-  - BM25: Traditional information retrieval algorithm optimized for document search
-  - Fuzzy Search: Flexible matching for typo-tolerant searches
-  - Field-weighted scoring for different content types
-- **Redis Integration**: Fast, in-memory storage for search data
-- **API Key Authentication**: Secure access control
-- **Configurable Field Weights**: Customize importance of different fields in search results
+- **Efficient Caching Layer**: 
+  - Redis Cache for fast, in-memory storage and retrieval
+  - Optimized for high-throughput search operations
+- **Smart Search Pipeline**:
+  - Initial fast retrieval using Redis Cache
+  - Advanced sorting algorithms for preliminary ranking
+  - GPT-4 mini powered reranking for final result ordering
+- **Field-weighted scoring**: Customize importance of different fields in search results
 - **Scoped Tagging**: Advanced filtering capabilities with scoped tags
+- **API Key Authentication**: Secure access control
 
 ## Architecture
 
 Fantom operates as a microservice with the following components:
 
-1. **Data Storage**: Uses Redis as the primary storage engine
-2. **Search Engine**: Implements multiple search algorithms with configurable weights
+1. **Data Storage**: Uses Redis Cache as the primary storage engine
+   - Chosen over Redis Search and vector search for its simplicity and performance
+   - Provides fast, in-memory access to search data
+   - Enables efficient caching of frequently accessed results
+2. **Search Pipeline**:
+   - Initial retrieval using Redis Cache for fast data access
+   - Advanced sorting algorithms for preliminary result ranking
+   - GPT-4 mini powered reranking for final result ordering
 3. **API Layer**: RESTful endpoint for search operations
 4. **Data Ingestion**: Scripts for processing and storing searchable content
 
@@ -38,8 +46,8 @@ X-API-Key: your_api_key
 {
     "query": "your search query",
     "parameters": {
-        "type": "bm25",  // or "fuzzy"
-        "tags": ["name", "description", "features"]
+        "tags": ["name", "description", "features"],
+        "rerank": true  // Enable GPT-4 mini reranking
     }
 }
 ```
@@ -50,8 +58,8 @@ X-API-Key: your_api_key
 {
     "query": "your search query",
     "parameters": {
-        "type": "bm25",
-        "tags": ["name:product", "category:electronics"]
+        "tags": ["name:product", "category:electronics"],
+        "rerank": true
     }
 }
 ```
@@ -77,12 +85,14 @@ X-API-Key: your_api_key
 
 ## Field Weights
 
-The search engine applies different weights to different fields:
+The search pipeline applies different weights to different fields during the initial sorting phase:
 
 - `name`: 2.0x weight
 - `description`: 1.8x weight
 - `weather`: 1.5x weight
 - Other fields: 1.0x weight
+
+Final results are reranked using GPT-4 mini for enhanced semantic understanding and relevance.
 
 ## Setup and Installation
 
