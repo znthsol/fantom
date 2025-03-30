@@ -9,7 +9,7 @@ const router = new Router();
 
 router.post('/v1/search/:user_id', async (ctx) => {
     const { user_id } = ctx.params;
-    const { query, parameters = { type: '', tags: [], algorithm: '' } } = (ctx.request as any).body;
+    const { query, parameters = { tags: [], algorithm: '' } } = (ctx.request as any).body;
     const config = loadFantomConfig();
 
     // Check if API key is provided
@@ -41,8 +41,8 @@ router.post('/v1/search/:user_id', async (ctx) => {
     try {
         let results: SearchResult[] = await searchAndSortFromRedis(query, user_id, algorithm);
 
-        // Use GPT to re-sort results based on user intent
-        if (results.length > 0) {
+        // Use GPT to re-sort results based on user intent if rerank parameter is true
+        if (results.length > 0 && config.users.find(user => user.user_id === user_id)?.rerank || false) {
             console.log("Results before reranking:", results.map(r => r.score));
             const rerankedResults = await reRanker(query, results);
             console.log("Results after reranking:", rerankedResults.map(r => r.score));
