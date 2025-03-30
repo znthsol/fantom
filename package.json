@@ -14,14 +14,16 @@
     "@redis/client": "^1.6.0",
     "@redis/search": "^1.2.0",
     "@spytech/flight": "github:ispyhumanfly/flight",
+    "@spytech/scribe": "^1.0.7",
     "dotenv": "^16.4.7"
   },
   "scripts": {
-    "start": "node -r dotenv/config ./node_modules/.bin/ts-node ./node_modules/@spytech/flight/src/flight.ts --port 3003 --disable_vite",
+    "start": "npx concurrently -n 'flight,scribe' \"node -r dotenv/config ./node_modules/.bin/ts-node ./node_modules/@spytech/flight/src/flight.ts --port 3003 --disable_vite\" \"node -r dotenv/config ./node_modules/.bin/ts-node ./node_modules/@spytech/scribe/dist/scribe.cli.js\"",
     "build:docs": "typedoc"
   },
   "devDependencies": {
     "@types/koa__router": "^12.0.4",
+    "concurrently": "^9.1.2",
     "ts-node": "^10.9.2",
     "typedoc": "^0.25.12",
     "typedoc-plugin-markdown": "^3.17.1"
