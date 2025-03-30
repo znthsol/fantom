@@ -5,8 +5,6 @@ dotenv.config()
 
 const client = new OpenAI()
 
-// Use full model name as version because there are exceptions to the naming pattern
-// o1 models do not support system role, so everything is in user role
 /**
  * Invokes OpenAI's GPT models through their API.
  * @param {object} params - Parameters for the GPT model invocation

@@ -8,9 +8,9 @@
 
 > **searchAndSortFromRedis**(`query`, `userId`, `config`): `Promise`\<`object`[]\>
 
-Defined in: [components/Fantom.common.ts:122](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.common.ts#L122)
+Defined in: [components/Fantom.common.ts:143](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.common.ts#L143)
 
-Searches and sorts data from Redis based on a query
+Searches and sorts data from Redis based on a query.
 
 ## Parameters
 
@@ -18,22 +18,29 @@ Searches and sorts data from Redis based on a query
 
 `string`
 
-The search query string
+The search query string.
 
 ### userId
 
 `string`
 
-The user ID for algorithm selection
+The user ID for algorithm selection.
 
 ### config
 
 `any`
 
-The Fantom configuration object
+The Fantom configuration object.
 
 ## Returns
 
 `Promise`\<`object`[]\>
 
-Array of sorted search results
+Array of sorted search results.
+
+## Example
+
+```ts
+// Search and sort from Redis
+const results = await searchAndSortFromRedis('example query', 'user123', config);
+```

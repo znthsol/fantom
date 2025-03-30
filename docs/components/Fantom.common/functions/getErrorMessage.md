@@ -8,9 +8,9 @@
 
 > **getErrorMessage**(`error`): `string`
 
-Defined in: [components/Fantom.common.ts:108](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.common.ts#L108)
+Defined in: [components/Fantom.common.ts:126](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.common.ts#L126)
 
-Extracts error message from an error object
+Extracts error message from an error object.
 
 ## Parameters
 
@@ -18,10 +18,17 @@ Extracts error message from an error object
 
 `unknown`
 
-The error object
+The error object.
 
 ## Returns
 
 `string`
 
-A string error message
+A string error message.
+
+## Example
+
+```ts
+// Get error message
+const errorMessage = getErrorMessage(new Error('Example error'));
+```

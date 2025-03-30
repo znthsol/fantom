@@ -1,4 +1,4 @@
-/** 
+/**
  * This file contains utility functions for use in the fantom component.
 */
 
@@ -8,8 +8,12 @@ import { createClient } from '@redis/client';
 import { calculateScore } from '../common/utils';
 
 /**
- * Loads and parses the Fantom configuration file
- * @returns The parsed configuration object
+ * Loads and parses the Fantom configuration file.
+ * @returns {Object} The parsed configuration object.
+ * @throws {Error} If the configuration file cannot be loaded or parsed.
+ * @example
+ * // Load the Fantom configuration
+ * const config = loadFantomConfig();
  */
 export const loadFantomConfig = (): any => {
   try {
@@ -34,10 +38,15 @@ export const loadFantomConfig = (): any => {
 };
 
 /**
- * Validates the search query parameters
- * @param query The search query string
- * @param parameters The search parameters object
- * @returns A boolean indicating if the parameters are valid
+ * Validates the search query parameters.
+ * @param {string} query - The search query string.
+ * @param {Object} parameters - The search parameters object.
+ * @param {string} parameters.type - The type of search algorithm.
+ * @param {string[]} parameters.tags - The tags associated with the search.
+ * @returns {boolean} A boolean indicating if the parameters are valid.
+ * @example
+ * // Validate search parameters
+ * const isValid = validateSearchParams('example query', { type: 'fuzzy', tags: ['tag1', 'tag2'] });
  */
 export const validateSearchParams = (
   query: string,
@@ -64,9 +73,12 @@ export const validateSearchParams = (
 };
 
 /**
- * Parses scoped tags from the format "scope:value"
- * @param tags Array of tags, potentially in scoped format
- * @returns Object with scopes as keys and values as arrays
+ * Parses scoped tags from the format "scope:value".
+ * @param {string[]} tags - Array of tags, potentially in scoped format.
+ * @returns {Object} Object with scopes as keys and values as arrays.
+ * @example
+ * // Parse scoped tags
+ * const scopedTags = parseScopedTags(['scope1:value1', 'scope2:value2']);
  */
 export const parseScopedTags = (tags: string[]): Record<string, string[]> => {
   const scopedTags: Record<string, string[]> = {};
@@ -86,10 +98,13 @@ export const parseScopedTags = (tags: string[]): Record<string, string[]> => {
 };
 
 /**
- * Formats search results for API response
- * @param results The raw search results
- * @param query The original query
- * @returns Formatted results object
+ * Formats search results for API response.
+ * @param {Array} results - The raw search results.
+ * @param {string} query - The original query.
+ * @returns {Object} Formatted results object.
+ * @example
+ * // Format search results
+ * const formattedResults = formatSearchResults(rawResults, 'example query');
  */
 export const formatSearchResults = (results: any[], query: string): object => {
   return {
@@ -101,9 +116,12 @@ export const formatSearchResults = (results: any[], query: string): object => {
 };
 
 /**
- * Extracts error message from an error object
- * @param error The error object
- * @returns A string error message
+ * Extracts error message from an error object.
+ * @param {unknown} error - The error object.
+ * @returns {string} A string error message.
+ * @example
+ * // Get error message
+ * const errorMessage = getErrorMessage(new Error('Example error'));
  */
 export const getErrorMessage = (error: unknown): string => {
   if (error instanceof Error) {
@@ -113,11 +131,14 @@ export const getErrorMessage = (error: unknown): string => {
 };
 
 /**
- * Searches and sorts data from Redis based on a query
- * @param query The search query string
- * @param userId The user ID for algorithm selection
- * @param config The Fantom configuration object
- * @returns Array of sorted search results
+ * Searches and sorts data from Redis based on a query.
+ * @param {string} query - The search query string.
+ * @param {string} userId - The user ID for algorithm selection.
+ * @param {Object} config - The Fantom configuration object.
+ * @returns {Promise<Array<{ key: string; value: any; score: number }>>} Array of sorted search results.
+ * @example
+ * // Search and sort from Redis
+ * const results = await searchAndSortFromRedis('example query', 'user123', config);
  */
 export const searchAndSortFromRedis = async (
     query: string,

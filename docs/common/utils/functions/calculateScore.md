@@ -8,7 +8,7 @@
 
 > **calculateScore**(`query`, `item`, `algorithm`): `number`
 
-Defined in: [common/utils.ts:25](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L25)
+Defined in: [common/utils.ts:25](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L25)
 
 Calculates a score for a given query and item using the specified algorithm.
 

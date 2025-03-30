@@ -8,9 +8,9 @@
 
 > **formatSearchResults**(`results`, `query`): `object`
 
-Defined in: [components/Fantom.common.ts:94](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.common.ts#L94)
+Defined in: [components/Fantom.common.ts:109](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.common.ts#L109)
 
-Formats search results for API response
+Formats search results for API response.
 
 ## Parameters
 
@@ -18,16 +18,23 @@ Formats search results for API response
 
 `any`[]
 
-The raw search results
+The raw search results.
 
 ### query
 
 `string`
 
-The original query
+The original query.
 
 ## Returns
 
 `object`
 
-Formatted results object
+Formatted results object.
+
+## Example
+
+```ts
+// Format search results
+const formattedResults = formatSearchResults(rawResults, 'example query');
+```

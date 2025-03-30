@@ -6,7 +6,7 @@
 
 # Interface: SearchResult
 
-Defined in: [common/utils.ts:262](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L262)
+Defined in: [common/utils.ts:262](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L262)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [common/utils.ts:262](https://github.com/ispyhumanfly/fantom/blob/00
 
 > **key**: `string`
 
-Defined in: [common/utils.ts:263](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L263)
+Defined in: [common/utils.ts:263](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L263)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [common/utils.ts:263](https://github.com/ispyhumanfly/fantom/blob/00
 
 > **value**: `any`
 
-Defined in: [common/utils.ts:264](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L264)
+Defined in: [common/utils.ts:264](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L264)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [common/utils.ts:264](https://github.com/ispyhumanfly/fantom/blob/00
 
 > **score**: `number`
 
-Defined in: [common/utils.ts:265](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L265)
+Defined in: [common/utils.ts:265](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L265)

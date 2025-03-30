@@ -8,4 +8,4 @@
 
 > **default**: `Middleware`\<`DefaultState`, `DefaultContext`, `unknown`\>
 
-Defined in: [components/Fantom.backend.ts:61](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.backend.ts#L61)
+Defined in: [components/Fantom.backend.ts:61](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.backend.ts#L61)

@@ -8,9 +8,9 @@
 
 > **validateSearchParams**(`query`, `parameters`): `boolean`
 
-Defined in: [components/Fantom.common.ts:42](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.common.ts#L42)
+Defined in: [components/Fantom.common.ts:51](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.common.ts#L51)
 
-Validates the search query parameters
+Validates the search query parameters.
 
 ## Parameters
 
@@ -18,22 +18,33 @@ Validates the search query parameters
 
 `string`
 
-The search query string
+The search query string.
 
 ### parameters
 
-The search parameters object
+The search parameters object.
 
 #### type
 
 `string`
 
+The type of search algorithm.
+
 #### tags
 
 `string`[]
+
+The tags associated with the search.
 
 ## Returns
 
 `boolean`
 
-A boolean indicating if the parameters are valid
+A boolean indicating if the parameters are valid.
+
+## Example
+
+```ts
+// Validate search parameters
+const isValid = validateSearchParams('example query', { type: 'fuzzy', tags: ['tag1', 'tag2'] });
+```

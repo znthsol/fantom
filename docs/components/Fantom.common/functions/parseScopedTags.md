@@ -8,9 +8,9 @@
 
 > **parseScopedTags**(`tags`): `Record`\<`string`, `string`[]\>
 
-Defined in: [components/Fantom.common.ts:71](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.common.ts#L71)
+Defined in: [components/Fantom.common.ts:83](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.common.ts#L83)
 
-Parses scoped tags from the format "scope:value"
+Parses scoped tags from the format "scope:value".
 
 ## Parameters
 
@@ -18,10 +18,17 @@ Parses scoped tags from the format "scope:value"
 
 `string`[]
 
-Array of tags, potentially in scoped format
+Array of tags, potentially in scoped format.
 
 ## Returns
 
 `Record`\<`string`, `string`[]\>
 
-Object with scopes as keys and values as arrays
+Object with scopes as keys and values as arrays.
+
+## Example
+
+```ts
+// Parse scoped tags
+const scopedTags = parseScopedTags(['scope1:value1', 'scope2:value2']);
+```

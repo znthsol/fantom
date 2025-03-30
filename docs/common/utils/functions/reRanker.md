@@ -8,7 +8,7 @@
 
 > **reRanker**(`query`, `results`): `Promise`\<[`SearchResult`](../interfaces/SearchResult.md)[]\>
 
-Defined in: [common/utils.ts:280](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L280)
+Defined in: [common/utils.ts:280](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L280)
 
 Re-ranks search results based on a query using GPT-4o.
 

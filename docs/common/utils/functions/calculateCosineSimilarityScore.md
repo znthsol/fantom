@@ -8,7 +8,7 @@
 
 > **calculateCosineSimilarityScore**(`query`, `item`, `corpusStats`): `number`
 
-Defined in: [common/utils.ts:227](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L227)
+Defined in: [common/utils.ts:227](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L227)
 
 Calculates a cosine similarity score for a given query and item.
 

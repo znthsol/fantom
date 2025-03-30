@@ -8,12 +8,23 @@
 
 > **loadFantomConfig**(): `any`
 
-Defined in: [components/Fantom.common.ts:14](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/components/Fantom.common.ts#L14)
+Defined in: [components/Fantom.common.ts:18](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/components/Fantom.common.ts#L18)
 
-Loads and parses the Fantom configuration file
+Loads and parses the Fantom configuration file.
 
 ## Returns
 
 `any`
 
-The parsed configuration object
+The parsed configuration object.
+
+## Throws
+
+If the configuration file cannot be loaded or parsed.
+
+## Example
+
+```ts
+// Load the Fantom configuration
+const config = loadFantomConfig();
+```

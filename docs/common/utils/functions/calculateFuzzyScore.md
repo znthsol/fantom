@@ -8,7 +8,7 @@
 
 > **calculateFuzzyScore**(`query`, `item`, `corpusStats`): `number`
 
-Defined in: [common/utils.ts:70](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L70)
+Defined in: [common/utils.ts:70](https://github.com/ispyhumanfly/fantom/blob/e7920176802f84bedc42f01e77d9e82bb3e8e1cb/common/utils.ts#L70)
 
 Calculates a fuzzy score for a given query and item.
 
