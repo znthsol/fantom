@@ -53,7 +53,7 @@ const score = calculateScore('search term', { name: 'example' }, 'bm25');
 
 #### Defined in
 
-[common/utils.ts:25](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L25)
+[common/utils.ts:25](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L25)
 
 ___
 
@@ -89,7 +89,7 @@ const score = calculateFuzzyScore('search term', { name: 'example', tags: ['tag1
 
 #### Defined in
 
-[common/utils.ts:70](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L70)
+[common/utils.ts:70](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L70)
 
 ___
 
@@ -125,7 +125,7 @@ const score = calculateBM25Score('search term', { name: 'example', tags: ['tag1'
 
 #### Defined in
 
-[common/utils.ts:129](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L129)
+[common/utils.ts:129](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L129)
 
 ___
 
@@ -161,7 +161,7 @@ const score = calculateTFIDFScore('search term', { name: 'example', tags: ['tag1
 
 #### Defined in
 
-[common/utils.ts:200](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L200)
+[common/utils.ts:200](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L200)
 
 ___
 
@@ -197,7 +197,7 @@ const score = calculateCosineSimilarityScore('search term', { key: 'example', ta
 
 #### Defined in
 
-[common/utils.ts:227](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L227)
+[common/utils.ts:227](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L227)
 
 ___
 
@@ -233,7 +233,7 @@ const score = calculateJaccardSimilarityScore('search term', { name: 'example', 
 
 #### Defined in
 
-[common/utils.ts:252](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L252)
+[common/utils.ts:252](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L252)
 
 ___
 
@@ -268,4 +268,4 @@ const reRankedResults = await reRanker('another search term', searchResults);
 
 #### Defined in
 
-[common/utils.ts:280](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/utils.ts#L280)
+[common/utils.ts:280](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/utils.ts#L280)

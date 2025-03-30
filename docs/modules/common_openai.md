@@ -33,4 +33,4 @@ Promise resolving to GPT's response text
 
 #### Defined in
 
-[common/openai.ts:16](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/common/openai.ts#L16)
+[common/openai.ts:16](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/common/openai.ts#L16)

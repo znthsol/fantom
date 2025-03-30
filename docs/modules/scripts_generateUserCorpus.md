@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[scripts/generateUserCorpus.ts:80](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/scripts/generateUserCorpus.ts#L80)
+[scripts/generateUserCorpus.ts:80](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/scripts/generateUserCorpus.ts#L80)

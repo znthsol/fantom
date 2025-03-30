@@ -40,7 +40,7 @@ const config = loadFantomConfig();
 
 #### Defined in
 
-[components/Fantom.common.ts:18](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/components/Fantom.common.ts#L18)
+[components/Fantom.common.ts:18](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/components/Fantom.common.ts#L18)
 
 ___
 
@@ -74,7 +74,7 @@ const isValid = validateSearchParams('example query', { type: 'fuzzy', tags: ['t
 
 #### Defined in
 
-[components/Fantom.common.ts:51](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/components/Fantom.common.ts#L51)
+[components/Fantom.common.ts:51](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/components/Fantom.common.ts#L51)
 
 ___
 
@@ -105,7 +105,7 @@ const scopedTags = parseScopedTags(['scope1:value1', 'scope2:value2']);
 
 #### Defined in
 
-[components/Fantom.common.ts:83](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/components/Fantom.common.ts#L83)
+[components/Fantom.common.ts:83](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/components/Fantom.common.ts#L83)
 
 ___
 
@@ -137,7 +137,7 @@ const formattedResults = formatSearchResults(rawResults, 'example query');
 
 #### Defined in
 
-[components/Fantom.common.ts:109](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/components/Fantom.common.ts#L109)
+[components/Fantom.common.ts:109](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/components/Fantom.common.ts#L109)
 
 ___
 
@@ -168,7 +168,7 @@ const errorMessage = getErrorMessage(new Error('Example error'));
 
 #### Defined in
 
-[components/Fantom.common.ts:126](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/components/Fantom.common.ts#L126)
+[components/Fantom.common.ts:126](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/components/Fantom.common.ts#L126)
 
 ___
 
@@ -201,4 +201,4 @@ const results = await searchAndSortFromRedis('example query', 'user123', config)
 
 #### Defined in
 
-[components/Fantom.common.ts:143](https://github.com/ispyhumanfly/fantom/blob/30ffb339eb87471c56aff9a36c00b63ecbbff2cc/components/Fantom.common.ts#L143)
+[components/Fantom.common.ts:143](https://github.com/ispyhumanfly/fantom/blob/579db0bfe70463ab669b28f1fa6e442784277dd6/components/Fantom.common.ts#L143)
