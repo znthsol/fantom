@@ -176,7 +176,7 @@ export const searchAndSortFromRedis = async (
         return allValues
             .sort((a, b) => b.score - a.score)
             .slice(0, 10)
-            .filter(item => item.score > 0);
+            .filter(item => item.score);
     } finally {
         await client.disconnect();
     }

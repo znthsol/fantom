@@ -6,5 +6,5 @@
         "rootDir": ".",
         "resolveJsonModule": true
     },
-    "include": ["components/**/*.ts", "common/utils.ts"]
+    "include": ["components/**/*.ts", "common/**/*.ts", "scripts/**/*.ts"]
 }
