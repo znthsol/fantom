@@ -13,3 +13,4 @@
 - [parseScopedTags](functions/parseScopedTags.md)
 - [formatSearchResults](functions/formatSearchResults.md)
 - [getErrorMessage](functions/getErrorMessage.md)
+- [searchAndSortFromRedis](functions/searchAndSortFromRedis.md)

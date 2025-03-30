@@ -8,7 +8,9 @@
 
 > **calculateBM25Score**(`query`, `item`, `corpusStats`): `number`
 
-Defined in: [common/utils.ts:82](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L82)
+Defined in: [common/utils.ts:129](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L129)
+
+Calculates a BM25 score for a given query and item.
 
 ## Parameters
 
@@ -16,14 +18,32 @@ Defined in: [common/utils.ts:82](https://github.com/ispyhumanfly/fantom/blob/dc6
 
 `string`
 
+The search query.
+
 ### item
 
 `any`
+
+The item to score against the query.
 
 ### corpusStats
 
 [`CorpusStats`](../interfaces/CorpusStats.md)
 
+The corpus statistics.
+
 ## Returns
 
 `number`
+
+- The calculated BM25 score.
+
+## Example
+
+```ts
+// Calculate a BM25 score with default corpus stats
+const score = calculateBM25Score('search term', { name: 'example' }, defaultCorpusStats);
+
+// Calculate a BM25 score with custom corpus stats
+const score = calculateBM25Score('search term', { name: 'example', tags: ['tag1', 'tag2'] }, customCorpusStats);
+```

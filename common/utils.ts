@@ -9,6 +9,19 @@ export interface CorpusStats {
     termDocumentFrequency?: Map<string, number>; // New field for TF-IDF
 }
 
+/**
+ * Calculates a score for a given query and item using the specified algorithm.
+ * @param {string} query - The search query.
+ * @param {any} item - The item to score against the query.
+ * @param {'fuzzy' | 'bm25' | 'tfidf' | 'cosine' | 'jaccard'} algorithm - The algorithm to use for scoring.
+ * @returns {number} - The calculated score.
+ * @example
+ * // Calculate a fuzzy score
+ * const score = calculateScore('search term', { name: 'example' }, 'fuzzy');
+ * 
+ * // Calculate a BM25 score
+ * const score = calculateScore('search term', { name: 'example' }, 'bm25');
+ */
 export function calculateScore(query: string, item: any, algorithm: 'fuzzy' | 'bm25' | 'tfidf' | 'cosine' | 'jaccard'): number {
     // Create a default corpus stats object if not available
     const defaultCorpusStats: CorpusStats = {
@@ -41,6 +54,19 @@ export function calculateScore(query: string, item: any, algorithm: 'fuzzy' | 'b
     }
 }
 
+/**
+ * Calculates a fuzzy score for a given query and item.
+ * @param {string} query - The search query.
+ * @param {any} item - The item to score against the query.
+ * @param {CorpusStats} corpusStats - The corpus statistics.
+ * @returns {number} - The calculated fuzzy score.
+ * @example
+ * // Calculate a fuzzy score with default corpus stats
+ * const score = calculateFuzzyScore('search term', { name: 'example' }, defaultCorpusStats);
+ * 
+ * // Calculate a fuzzy score with custom corpus stats
+ * const score = calculateFuzzyScore('search term', { name: 'example', tags: ['tag1', 'tag2'] }, customCorpusStats);
+ */
 export function calculateFuzzyScore(query: string, item: any, corpusStats: CorpusStats): number {
     let score = 0;
     const queryLower = query.toLowerCase();
@@ -87,6 +113,19 @@ export function calculateFuzzyScore(query: string, item: any, corpusStats: Corpu
     return score;
 }
 
+/**
+ * Calculates a BM25 score for a given query and item.
+ * @param {string} query - The search query.
+ * @param {any} item - The item to score against the query.
+ * @param {CorpusStats} corpusStats - The corpus statistics.
+ * @returns {number} - The calculated BM25 score.
+ * @example
+ * // Calculate a BM25 score with default corpus stats
+ * const score = calculateBM25Score('search term', { name: 'example' }, defaultCorpusStats);
+ * 
+ * // Calculate a BM25 score with custom corpus stats
+ * const score = calculateBM25Score('search term', { name: 'example', tags: ['tag1', 'tag2'] }, customCorpusStats);
+ */
 export function calculateBM25Score(query: string, item: any, corpusStats: CorpusStats): number {
     const k1 = 1.2;
     const b = 0.75;
@@ -145,6 +184,19 @@ export function calculateBM25Score(query: string, item: any, corpusStats: Corpus
     return score;
 }
 
+/**
+ * Calculates a TF-IDF score for a given query and item.
+ * @param {string} query - The search query.
+ * @param {any} item - The item to score against the query.
+ * @param {CorpusStats} corpusStats - The corpus statistics.
+ * @returns {number} - The calculated TF-IDF score.
+ * @example
+ * // Calculate a TF-IDF score with default corpus stats
+ * const score = calculateTFIDFScore('search term', { name: 'example' }, defaultCorpusStats);
+ * 
+ * // Calculate a TF-IDF score with custom corpus stats
+ * const score = calculateTFIDFScore('search term', { name: 'example', tags: ['tag1', 'tag2'] }, customCorpusStats);
+ */
 export function calculateTFIDFScore(query: string, item: any, corpusStats: CorpusStats): number {
     let score = 0;
     const queryTerms = query.toLowerCase().split(/\s+/);
@@ -159,6 +211,19 @@ export function calculateTFIDFScore(query: string, item: any, corpusStats: Corpu
     return score;
 }
 
+/**
+ * Calculates a cosine similarity score for a given query and item.
+ * @param {string} query - The search query.
+ * @param {any} item - The item to score against the query.
+ * @param {CorpusStats} corpusStats - The corpus statistics.
+ * @returns {number} - The calculated cosine similarity score.
+ * @example
+ * // Calculate a cosine similarity score with default corpus stats
+ * const score = calculateCosineSimilarityScore('search term', { key: 'example' }, defaultCorpusStats);
+ * 
+ * // Calculate a cosine similarity score with custom corpus stats
+ * const score = calculateCosineSimilarityScore('search term', { key: 'example', tags: ['tag1', 'tag2'] }, customCorpusStats);
+ */
 export function calculateCosineSimilarityScore(query: string, item: any, corpusStats: CorpusStats): number {
     const queryTerms = query.toLowerCase().split(/\s+/);
     const queryVector = queryTerms.map(term => corpusStats.termFrequencies.get(term) || 0);
@@ -171,6 +236,19 @@ export function calculateCosineSimilarityScore(query: string, item: any, corpusS
     return dotProduct / (queryMagnitude * itemMagnitude);
 }
 
+/**
+ * Calculates a Jaccard similarity score for a given query and item.
+ * @param {string} query - The search query.
+ * @param {any} item - The item to score against the query.
+ * @param {CorpusStats} corpusStats - The corpus statistics.
+ * @returns {number} - The calculated Jaccard similarity score.
+ * @example
+ * // Calculate a Jaccard similarity score with default corpus stats
+ * const score = calculateJaccardSimilarityScore('search term', { name: 'example' }, defaultCorpusStats);
+ * 
+ * // Calculate a Jaccard similarity score with custom corpus stats
+ * const score = calculateJaccardSimilarityScore('search term', { name: 'example', tags: ['tag1', 'tag2'] }, customCorpusStats);
+ */
 export function calculateJaccardSimilarityScore(query: string, item: any, corpusStats: CorpusStats): number {
     const queryTerms = new Set(query.toLowerCase().split(/\s+/));
     const itemTerms = new Set(Object.values(item).flatMap(value => typeof value === 'string' ? value.toLowerCase().split(/\s+/) : []));
@@ -187,6 +265,18 @@ export interface SearchResult {
     score: number;
 }
 
+/**
+ * Re-ranks search results based on a query using GPT-4o.
+ * @param {string} query - The search query.
+ * @param {SearchResult[]} results - The search results to re-rank.
+ * @returns {Promise<SearchResult[]>} - The re-ranked search results.
+ * @example
+ * // Re-rank search results
+ * const reRankedResults = await reRanker('search term', searchResults);
+ * 
+ * // Re-rank search results with different query
+ * const reRankedResults = await reRanker('another search term', searchResults);
+ */
 export async function reRanker(query: string, results: SearchResult[]): Promise<SearchResult[]> {
     if (results.length === 0) return results;
 

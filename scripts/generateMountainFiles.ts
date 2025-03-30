@@ -77,7 +77,7 @@ const mountains = [
     }
 ];
 
-async function generateMountainFiles() {
+export async function generateMountainFiles() {
     const tmpDir = path.join(process.cwd(), 'tmp');
     
     for (const mountain of mountains) {

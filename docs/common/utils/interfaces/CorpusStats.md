@@ -6,7 +6,7 @@
 
 # Interface: CorpusStats
 
-Defined in: [common/utils.ts:3](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L3)
+Defined in: [common/utils.ts:3](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L3)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [common/utils.ts:3](https://github.com/ispyhumanfly/fantom/blob/dc6b
 
 > **totalDocuments**: `number`
 
-Defined in: [common/utils.ts:4](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L4)
+Defined in: [common/utils.ts:4](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L4)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [common/utils.ts:4](https://github.com/ispyhumanfly/fantom/blob/dc6b
 
 > **avgFieldLength**: `number`
 
-Defined in: [common/utils.ts:5](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L5)
+Defined in: [common/utils.ts:5](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L5)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [common/utils.ts:5](https://github.com/ispyhumanfly/fantom/blob/dc6b
 
 > **termFrequencies**: `Map`\<`string`, `number`\>
 
-Defined in: [common/utils.ts:6](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L6)
+Defined in: [common/utils.ts:6](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L6)
 
 ***
 
@@ -38,4 +38,20 @@ Defined in: [common/utils.ts:6](https://github.com/ispyhumanfly/fantom/blob/dc6b
 
 > **fieldWeights**: `Record`\<`string`, `number`\>
 
-Defined in: [common/utils.ts:7](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L7)
+Defined in: [common/utils.ts:7](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L7)
+
+***
+
+### documentVectors?
+
+> `optional` **documentVectors**: `Map`\<`string`, `number`[]\>
+
+Defined in: [common/utils.ts:8](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L8)
+
+***
+
+### termDocumentFrequency?
+
+> `optional` **termDocumentFrequency**: `Map`\<`string`, `number`\>
+
+Defined in: [common/utils.ts:9](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L9)

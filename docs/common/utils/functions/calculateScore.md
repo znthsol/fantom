@@ -8,7 +8,9 @@
 
 > **calculateScore**(`query`, `item`, `algorithm`): `number`
 
-Defined in: [common/utils.ts:10](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/utils.ts#L10)
+Defined in: [common/utils.ts:25](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/utils.ts#L25)
+
+Calculates a score for a given query and item using the specified algorithm.
 
 ## Parameters
 
@@ -16,14 +18,32 @@ Defined in: [common/utils.ts:10](https://github.com/ispyhumanfly/fantom/blob/dc6
 
 `string`
 
+The search query.
+
 ### item
 
 `any`
 
+The item to score against the query.
+
 ### algorithm
 
-`"fuzzy"` | `"bm25"`
+The algorithm to use for scoring.
+
+`"fuzzy"` | `"bm25"` | `"tfidf"` | `"cosine"` | `"jaccard"`
 
 ## Returns
 
 `number`
+
+- The calculated score.
+
+## Example
+
+```ts
+// Calculate a fuzzy score
+const score = calculateScore('search term', { name: 'example' }, 'fuzzy');
+
+// Calculate a BM25 score
+const score = calculateScore('search term', { name: 'example' }, 'bm25');
+```

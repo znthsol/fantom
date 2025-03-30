@@ -8,7 +8,7 @@
 
 > **GPT**(`params`): `Promise`\<`string`\>
 
-Defined in: [common/openai.ts:18](https://github.com/ispyhumanfly/fantom/blob/dc6b6b3b0135c5a349e53bb16272a109c9a9cf07/common/openai.ts#L18)
+Defined in: [common/openai.ts:18](https://github.com/ispyhumanfly/fantom/blob/002f113e9685876d0f3f498ccd9514f78e641ee6/common/openai.ts#L18)
 
 Invokes OpenAI's GPT models through their API.
 
