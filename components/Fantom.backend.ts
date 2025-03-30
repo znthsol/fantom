@@ -36,8 +36,10 @@ router.post('/v1/search/:user_id', async (ctx) => {
         return;
     }
 
+    const algorithm = parameters.algorithm || config.users.find(user => user.user_id === user_id)?.algorithm || "bm25";
+
     try {
-        let results: SearchResult[] = await searchAndSortFromRedis(query, user_id, parameters.algorithm);
+        let results: SearchResult[] = await searchAndSortFromRedis(query, user_id, algorithm);
 
         // Use GPT to re-sort results based on user intent
         if (results.length > 0) {
@@ -48,8 +50,9 @@ router.post('/v1/search/:user_id', async (ctx) => {
         }
         
         ctx.body = {
+            user_id,
             query,
-            algorithm: parameters.algorithm,
+            algorithm,
             count: results.length,
             results
         };
