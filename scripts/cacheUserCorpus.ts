@@ -3,73 +3,55 @@ import { config } from 'dotenv';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { createClient } from '@redis/client';
+import axios from 'axios';
 
 // Load environment variables
 config();
 
-async function getAllFiles(dir: string): Promise<string[]> {
-    const files: string[] = [];
-    
-    async function traverse(currentDir: string) {
-        const entries = await fs.readdir(currentDir, { withFileTypes: true });
-        
-        for (const entry of entries) {
-            const fullPath = path.join(currentDir, entry.name);
-            
-            if (entry.isDirectory()) {
-                await traverse(fullPath);
-            } else {
-                files.push(fullPath);
-            }
-        }
+// Fetch data from Scribe
+async function fetchDataFromScribe() {
+    const scribeBaseUrl = `http://localhost:${process.env.SCRIBE_APP_PORT}`;
+    try {
+        const response = await axios.get(`${scribeBaseUrl}/fantom/all`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching data from Scribe:', error);
+        throw error;
     }
-    
-    await traverse(dir);
-    return files;
 }
 
 async function main() {
-    
-    const baseDir = process.env.FANTOM_BASE_DIR || "./tmp"
-    
-    if (!baseDir) {
-        console.error('FANTOM_BASE_DIR environment variable is not set');
-        process.exit(1);
-    }
+    // Initialize Redis client
+    const redis = createClient({
+        url: process.env.REDIS_URL || 'redis://localhost:6379',
+        database: 5
+    });
+
+    await redis.connect();
+    console.log('Connected to Redis');
 
     try {
-        // Initialize Redis client
-        const redis = createClient({
-            url: process.env.REDIS_URL || 'redis://localhost:6379',
-            database: 5
-        });
+        // Fetch data from Scribe
+        const data = await fetchDataFromScribe();
+        console.log(`Fetched ${data.length} records from Scribe`);
 
-        await redis.connect();
-        console.log('Connected to Redis');
-
-        // Get all files from the base directory
-        const files = await getAllFiles(baseDir);
-        console.log(`Found ${files.length} files to process`);
-
-        // Process each file
-        for (const file of files) {
+        // Process each record
+        for (const record of data) {
             try {
-                const content = await fs.readFile(file, 'utf-8');
-                const relativePath = path.relative(baseDir, file);
-                
-                // Store the file content in Redis
-                await redis.set(`file:${relativePath}`, content);
-                console.log(`Processed: ${relativePath}`);
+                const { id, data: content } = record;
+                // Store the record content in Redis
+                await redis.set(`record:${id}`, JSON.stringify(content));
+                console.log(`Processed record: ${id}`);
             } catch (error) {
-                console.error(`Error processing file ${file}:`, error);
+                console.error(`Error processing record ${record.id}:`, error);
             }
         }
 
-        console.log('Finished processing all files');
-        await redis.quit();
+        console.log('Finished processing all records');
     } catch (error) {
         console.error('Error:', error);
-        process.exit(1);
+    } finally {
+        await redis.quit();
     }
 }
 

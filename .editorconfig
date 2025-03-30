@@ -1,0 +1,48 @@
+# EditorConfig is a file format for defining coding styles
+# https://editorconfig.org/
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# TypeScript and JavaScript files for Fantom/Scribe project
+[*.{ts,js,tsx,jsx}]
+indent_size = 4
+quote_type = single
+max_line_length = 100
+
+# JSON files (including schema files)
+[*.json]
+indent_size = 4
+
+# Environment and config files
+[{.env,.env.*,*.yml,*.yaml}]
+indent_size = 4
+quote_type = double
+
+# Markdown documentation
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 80
+
+# Shell scripts for project utilities
+[scripts/*.{sh,ts}]
+indent_size = 4
+insert_final_newline = true
+
+# Component files
+[components/*.ts]
+indent_size = 4
+quote_type = single
+
+# Redis and database related files
+[*.{sql,redis}]
+indent_size = 4
