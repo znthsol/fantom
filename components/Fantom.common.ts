@@ -52,9 +52,9 @@ export const validateSearchParams = (
   query: string,
   parameters: { type: string; tags: string[] }
 ): boolean => {
-//   if (!query || typeof query !== 'string' || query.trim() === '') {
-//     return false;
-//   }
+  if (!query || typeof query !== 'string' || query.trim() === '') {
+    return false;
+  }
 
 //   if (!parameters || typeof parameters !== 'object') {
 //     return false;
@@ -143,12 +143,14 @@ export const getErrorMessage = (error: unknown): string => {
 export const searchAndSortFromRedis = async (
     query: string,
     userId: string,
-    config: any
+    algorithm: string
 ): Promise<Array<{ key: string; value: any; score: number }>> => {
     const client = createClient({
         url: process.env.REDIS_URL || 'redis://localhost:6379',
         database: 5
     });
+
+    const config = loadFantomConfig();
     
     try {
         await client.connect();
@@ -162,7 +164,7 @@ export const searchAndSortFromRedis = async (
                 const score = calculateScore(
                     query,
                     parsedValue,
-                    config.users.find(user => user.user_id === userId)?.algorithm || "bm25"
+                    algorithm || config.users.find(user => user.user_id === userId)?.algorithm || "bm25"
                 );
                 allValues.push({ key, value: parsedValue, score });
             } catch (e) {
