@@ -143,7 +143,8 @@ export const getErrorMessage = (error: unknown): string => {
 export const searchAndSortFromRedis = async (
     query: string,
     userId: string,
-    algorithm: string
+    algorithm: string,
+    keyPattern: string = '*'
 ): Promise<Array<{ key: string; value: any; score: number }>> => {
     const client = createClient({
         url: process.env.REDIS_URL || 'redis://localhost:6379',
@@ -154,7 +155,15 @@ export const searchAndSortFromRedis = async (
     
     try {
         await client.connect();
-        const keys = await client.keys('*');
+        // Use SCAN to iterate over keys matching the pattern
+        const keys = [];
+        let cursor = 0;
+        do {
+            const reply = await client.scan(cursor, { MATCH: keyPattern });
+            cursor = reply.cursor;
+            keys.push(...reply.keys);
+        } while (cursor !== 0);
+
         const allValues = [];
         
         for (const key of keys) {

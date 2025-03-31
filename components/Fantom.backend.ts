@@ -39,7 +39,7 @@ router.post('/v1/search/:user_id', async (ctx) => {
     const algorithm = parameters.algorithm || config.users.find(user => user.user_id === user_id)?.algorithm || "bm25";
 
     try {
-        let results: SearchResult[] = await searchAndSortFromRedis(query, user_id, algorithm);
+        let results: SearchResult[] = await searchAndSortFromRedis(query, user_id, algorithm, "*");
 
         // Use GPT to re-sort results based on user intent if rerank parameter is true
         if (results.length > 0 && config.users.find(user => user.user_id === user_id)?.rerank || false) {
