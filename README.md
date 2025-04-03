@@ -138,25 +138,6 @@ After ensuring the service is running, follow these steps to set up your data:
 
 Once these steps are completed, you should be able to query the endpoint and start using the API.
 
-## Data Ingestion
-
-Use the provided scripts to process and store your searchable content:
-
-1. Place your JSON data files in the `tmp` directory
-2. Run the vectorization script:
-   ```bash
-   ./scripts/vectorizeStorage.ts
-   ```
-
-## Development
-
-The project uses TypeScript and is built with Node.js. Key dependencies include:
-
-- `@koa/router`: API routing
-- `@redis/client`: Redis integration
-- `@huggingface/inference`: AI-powered search enhancements
-- `@langchain/community`: Additional search capabilities
-
 ## License
 
 MIT
