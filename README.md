@@ -117,6 +117,27 @@ Final results are reranked using GPT-4 mini for enhanced semantic understanding 
    npm start
    ```
 
+### First-Time Setup
+
+After ensuring the service is running, follow these steps to set up your data:
+
+1. **Generate User Corpus**: Create an example corpus of data.
+   ```bash
+   npx ts-node scripts/generateUserCorpus.ts
+   ```
+
+2. **Import User Corpus**: Import the generated corpus into the system.
+   ```bash
+   npx ts-node scripts/importUserCorpusScribe.ts
+   ```
+
+3. **Cache User Corpus**: Add the imported data to Redis for caching.
+   ```bash
+   npx ts-node scripts/cacheUserCorpus.ts
+   ```
+
+Once these steps are completed, you should be able to query the endpoint and start using the API.
+
 ## Data Ingestion
 
 Use the provided scripts to process and store your searchable content:
