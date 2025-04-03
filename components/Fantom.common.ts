@@ -1,6 +1,9 @@
 /**
- * This file contains utility functions for use in the fantom component.
-*/
+ * @fileoverview Utility functions for the Fantom search component.
+ * @module components/Fantom.common
+ * @description This module provides common utility functions for the Fantom search system,
+ * including configuration loading, parameter validation, error handling, and Redis operations.
+ */
 
 import fs from 'fs';
 import path from 'path';

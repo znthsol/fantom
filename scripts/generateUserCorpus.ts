@@ -77,8 +77,16 @@ const mountains = [
     }
 ];
 
+
 export async function generateMountainFiles() {
     const tmpDir = path.join(process.cwd(), 'tmp');
+    
+    // Create tmp directory if it doesn't exist
+    try {
+        await fs.mkdir(tmpDir, { recursive: true });
+    } catch (error) {
+        console.log('tmp directory already exists or could not be created');
+    }
     
     for (const mountain of mountains) {
         const fileName = mountain.name.toLowerCase().replace(/\s+/g, '_') + '.json';

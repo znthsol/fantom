@@ -1,5 +1,20 @@
 {
 
+  /**
+   * Fantom Configuration File
+   * 
+   * This file contains configuration settings for the Fantom search system.
+   * 
+   * @property {Array} users - Array of user configurations
+   * @property {string} users[].user_id - Unique identifier for the user
+   * @property {string} users[].name - User's full name
+   * @property {string} users[].email - User's email address
+   * @property {string} users[].api-key - API key for authentication
+   * @property {string} users[].algorithm - Search algorithm to use (e.g., "bm25", "fuzzy", "tfidf")
+   * @property {boolean} users[].rerank - Whether to use GPT to re-rank search results
+   * @property {number} users[].redis-database - Redis database number to use
+   * @property {string} users[].path - User's data path
+   */
   "users": [
     {
       "user_id": "ismaeel",
